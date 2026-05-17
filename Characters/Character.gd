@@ -53,6 +53,8 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 func set_hp(new_hp: int) -> void:
 	hp = clamp(new_hp, 0, max_hp)
 	emit_signal("hp_changed", hp)
+	if name == "Player":
+		SavedData.hp = hp
 
 
 func _spawn_hit_effect() -> void:

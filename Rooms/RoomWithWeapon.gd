@@ -1,12 +1,13 @@
 extends DungeonRoom
 
-const WEAPONS: Array = [preload("res://Weapons/WarHammer.tscn"), preload("res://Weapons/BattleAxe.tscn")]
+const CHEST_SCENE: PackedScene = preload("res://Rooms/Chest.tscn")
+const REWARD_LOOT_TABLE: LootTable = preload("res://Rooms/RewardLootTable.tres")
 
 @onready var weapon_pos: Marker2D = get_node("WeaponPos")
 
 
 func _ready() -> void:
-	var weapon: Node2D = WEAPONS[randi() % WEAPONS.size()].instantiate()
-	weapon.position = weapon_pos.position
-	weapon.on_floor = true
-	add_child(weapon)
+	var chest: Chest = CHEST_SCENE.instantiate()
+	chest.position = weapon_pos.position
+	chest.loot_table = REWARD_LOOT_TABLE
+	add_child(chest)

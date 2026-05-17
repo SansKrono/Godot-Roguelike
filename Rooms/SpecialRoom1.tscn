@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://36w2uo3nse58"]
+[gd_scene load_steps=7 format=3 uid="uid://36w2uo3nse58"]
 
 [ext_resource type="PackedScene" uid="uid://7oeqdu22e1q5" path="res://Rooms/Room.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Rooms/Furniture and Traps/Door.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dmay3kb4dokgj" path="res://Rooms/Furniture and Traps/Spikes.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://bm155ruyh7phk" path="res://Items/HealthPotion.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://b828h7j3t8wkq" path="res://Rooms/Chest.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://df9h8j3t8wkq" path="res://Rooms/CommonLootTable.tres" id="5"]
+
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 16)
@@ -119,5 +121,7 @@ position = Vector2(248, 152)
 position = Vector2(352, 128)
 shape = SubResource("1")
 
-[node name="HealthPotion" parent="." index="8" instance=ExtResource("4")]
+[node name="Chest" parent="." index="8" instance=ExtResource("4")]
 position = Vector2(296, 120)
+loot_table = ExtResource("5")
+

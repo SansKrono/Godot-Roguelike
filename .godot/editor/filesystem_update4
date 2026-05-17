@@ -11,3 +11,16 @@ res://Rooms/Furniture and Traps/Door.gd
 res://Characters/Enemies/Flying Creature/FlyingCreature.gd
 res://Rooms/RoomWithWeapon.gd
 res://Weapons/UI.gd
+res://Autoloads/SavedData.gd
+res://Characters/Character.gd
+res://Items/HealthPotion.tscn
+res://UI.gd
+res://Items/MaxHPUpgrade.tscn
+res://Items/SpeedUpgrade.tscn
+res://Rooms/Chest.tscn
+res://Rooms/RewardLootTable.tres
+res://Rooms/SpecialRoom1.tscn
+res://Rooms/Chest.gd
+res://Rooms/SpawnRoom0.tscn
+res://Rooms/TileSet.tres
+res://Rooms/SpawnRoom1.tscn

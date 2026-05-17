@@ -10,11 +10,14 @@ var max_hp: int = 4
 @onready var health_bar: TextureProgressBar = get_node("HealthBar")
 
 @onready var inventory: HBoxContainer = get_node("PanelContainer/Inventory")
+@onready var coin_label: Label = get_node("CoinCounter/Label")
 
 
 func _ready() -> void:
 	max_hp = player.max_hp
 	_update_health_bar(100)
+	player.coins_changed.connect(_on_Player_coins_changed)
+	_on_Player_coins_changed(player.coins)
 
 
 func _update_health_bar(new_value: int) -> void:
@@ -40,3 +43,7 @@ func _on_Player_weapon_picked_up(weapon_texture: Texture2D) -> void:
 
 func _on_Player_weapon_droped(index: int) -> void:
 	inventory.get_child(index).queue_free()
+
+
+func _on_Player_coins_changed(new_coins: int) -> void:
+	coin_label.text = "x " + str(new_coins)

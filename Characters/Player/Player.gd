@@ -1,14 +1,17 @@
 extends Character
+class_name Player
 
 const DUST_SCENE: PackedScene = preload("res://Characters/Player/Dust.tscn")
 
 enum {UP, DOWN}
 
 var current_weapon: Node2D
+var coins: int = 0: set = set_coins
 
 signal weapon_switched(prev_index, new_index)
 signal weapon_picked_up(weapon_texture)
 signal weapon_droped(index)
+signal coins_changed(new_coins)
 
 @onready var parent: Node2D = get_parent()
 @onready var weapons: Node2D = get_node("Weapons")
@@ -21,8 +24,18 @@ func _ready() -> void:
 	_restore_previous_state()
 
 
+func set_coins(new_coins: int) -> void:
+	coins = new_coins
+	emit_signal("coins_changed", coins)
+
+
 func _restore_previous_state() -> void:
+	self.max_hp = SavedData.max_hp
 	self.hp = SavedData.hp
+	self.max_speed = SavedData.max_speed
+	self.accerelation = SavedData.accerelation
+	self.coins = SavedData.coins
+	
 	for weapon in SavedData.weapons:
 		weapon = weapon.duplicate()
 		weapon.position = Vector2.ZERO
