@@ -25,8 +25,8 @@ func _ready() -> void:
 		player_detector.set_collision_mask_value(1, false)
 		player_detector.set_collision_mask_value(2, false)
 
-	connect("draw", _on_show)
-	connect("hidden", _on_hide)
+	draw.connect(_on_show)
+	hidden.connect(_on_hide)
 
 
 func get_input() -> void:
@@ -83,7 +83,7 @@ func interpolate_pos(initial_pos: Vector2, final_pos: Vector2) -> void:
 	position = initial_pos
 	tween = create_tween()
 	tween.tween_property(self, "position", final_pos, 0.8).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	tween.connect("finished", _on_Tween_tween_completed)
+	tween.finished.connect(_on_Tween_tween_completed)
 	player_detector.set_collision_mask_value(1, true)
 
 

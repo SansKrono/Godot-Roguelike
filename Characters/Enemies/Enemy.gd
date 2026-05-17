@@ -9,7 +9,7 @@ class_name Enemy
 
 
 func _ready() -> void:
-	var __ = connect("tree_exited", Callable(get_parent(), "_on_enemy_killed"))
+	tree_exited.connect(get_parent()._on_enemy_killed)
 
 
 func chase() -> void:

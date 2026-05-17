@@ -1,6 +1,9 @@
 extends Enemy
 
 
+static var _slime_scene: PackedScene = null
+
+
 func _process(_delta: float) -> void:
 	if is_instance_valid(player):
 		if player.global_position.y > global_position.y:
@@ -17,7 +20,9 @@ func duplicate_slime() -> void:
 
 
 func _spawn_slime(direction: Vector2) -> void:
-	var slime: CharacterBody2D = load("res://Characters/Enemies/Bosses/SlimeBoss.tscn").instantiate()
+	if _slime_scene == null:
+		_slime_scene = load("res://Characters/Enemies/Bosses/SlimeBoss.tscn")
+	var slime: CharacterBody2D = _slime_scene.instantiate()
 	slime.position = position
 	slime.scale = scale/2
 	slime.hp = max_hp/2.0

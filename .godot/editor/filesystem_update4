@@ -1,0 +1,13 @@
+res://Characters/Hitbox.gd
+res://Characters/Enemies/Enemy.gd
+res://Characters/Enemies/Bosses/SlimeBoss.gd
+res://Characters/Enemies/Bosses/SlimeBossFSM.gd
+res://Characters/Player/Player.gd
+res://Items/HealthPotion.gd
+res://Rooms/Furniture and Traps/Spikes.gd
+res://Weapons/Weapon.gd
+res://default_env.tres
+res://Rooms/Furniture and Traps/Door.gd
+res://Characters/Enemies/Flying Creature/FlyingCreature.gd
+res://Rooms/RoomWithWeapon.gd
+res://Weapons/UI.gd

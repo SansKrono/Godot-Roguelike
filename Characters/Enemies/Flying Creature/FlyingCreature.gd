@@ -5,4 +5,3 @@ extends Enemy
 
 func _process(_delta: float) -> void:
 	hitbox.knockback_direction = velocity.normalized()
-
