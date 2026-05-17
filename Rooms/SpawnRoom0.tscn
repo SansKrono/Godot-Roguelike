@@ -49,3 +49,7 @@ loot_table = ExtResource("6_tv2qw")
 [node name="Chest2" parent="." index="13" unique_id=506338466 instance=ExtResource("5_auaoo")]
 position = Vector2(40, 86)
 loot_table = ExtResource("7_a5xop")
+
+[node name="Chest" parent="." index="14" unique_id=502210555 instance=ExtResource("5_auaoo")]
+position = Vector2(199, 55)
+loot_table = ExtResource("6_tv2qw")
