@@ -70,9 +70,28 @@ func _spawn_loot() -> void:
 		var start_pos: Vector2 = item_instance.global_position
 		
 		# Parabolic trajectory variables
-		var random_angle: float = randf_range(0, 2 * PI)
-		var distance: float = randf_range(24, 36)
-		var landing_pos: Vector2 = start_pos + Vector2.from_angle(random_angle) * distance
+		var landing_pos: Vector2
+		var space_state = get_world_2d().direct_space_state
+		var valid_pos_found: bool = false
+		
+		for i in range(10):
+			var random_angle: float = randf_range(0, 2 * PI)
+			var distance: float = randf_range(24, 36)
+			var candidate_pos: Vector2 = start_pos + Vector2.from_angle(random_angle) * distance
+			
+			var query = PhysicsPointQueryParameters2D.new()
+			query.position = candidate_pos
+			query.collision_mask = 1 # Check against World layer
+			var result = space_state.intersect_point(query)
+			
+			if result.is_empty():
+				landing_pos = candidate_pos
+				valid_pos_found = true
+				break
+			
+			if i == 9:
+				landing_pos = candidate_pos
+
 		var peak_y: float = min(start_pos.y, landing_pos.y) - randf_range(20, 32)
 		
 		# Scale up the item as it pops
