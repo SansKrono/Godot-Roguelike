@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://7oeqdu22e1q5" path="res://Rooms/Room.tscn" id="1"]
+[ext_resource type="Script" path="res://Rooms/ProceduralRoom.gd" id="2"]
+
+[node name="ProceduralRoom" instance=ExtResource("1")]
+script = ExtResource("2")

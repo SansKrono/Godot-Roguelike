@@ -7,7 +7,13 @@ const SPAWN_EXPLOSION_SCENE: PackedScene = preload("res://Characters/Enemies/Spa
 
 const ENEMY_SCENES: Dictionary = {
 	"FLYING_CREATURE": preload("res://Characters/Enemies/Flying Creature/FlyingCreature.tscn"),
-	"GOBLIN": preload("res://Characters/Enemies/Goblin/Goblin.tscn"), "SLIME_BOSS": preload("res://Characters/Enemies/Bosses/SlimeBoss.tscn")
+	"GOBLIN": preload("res://Characters/Enemies/Goblin/Goblin.tscn"),
+	"SLIME_BOSS": preload("res://Characters/Enemies/Bosses/SlimeBoss.tscn"),
+	"SKELETON_ARCHER": preload("res://Characters/Enemies/SkeletonArcher/SkeletonArcher.tscn"),
+	"SLIME": preload("res://Characters/Enemies/Slime/Slime.tscn"),
+	"ORC": preload("res://Characters/Enemies/Orc/Orc.tscn"),
+	"WIZARD": preload("res://Characters/Enemies/Wizard/Wizard.tscn"),
+	"WEREWOLF": preload("res://Characters/Enemies/Werewolf/Werewolf.tscn")
 }
 
 var num_enemies: int
@@ -48,10 +54,10 @@ func _spawn_enemies() -> void:
 			enemy = ENEMY_SCENES.SLIME_BOSS.instantiate()
 			num_enemies = 15
 		else:
-			if randi() % 2 == 0:
-				enemy = ENEMY_SCENES.FLYING_CREATURE.instantiate()
-			else:
-				enemy = ENEMY_SCENES.GOBLIN.instantiate()
+			var enemy_keys = ENEMY_SCENES.keys()
+			enemy_keys.erase("SLIME_BOSS")
+			var random_key = enemy_keys[randi() % enemy_keys.size()]
+			enemy = ENEMY_SCENES[random_key].instantiate()
 		enemy.position = enemy_position.position
 		call_deferred("add_child", enemy)
 
