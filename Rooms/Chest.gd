@@ -147,9 +147,9 @@ func _spawn_loot() -> void:
 		pop_tween.finished.connect(func():
 			if is_instance_valid(detector) and not item_instance is UpgradePickup:
 				detector.set_deferred("monitoring", true)
-			if is_instance_valid(spawned_upgrade):
+			if is_instance_valid(spawned_upgrade) and is_instance_valid(item_instance):
 				interaction_area.set_deferred("monitoring", true)
-				var hover_tween = create_tween().set_loops()
+				var hover_tween = item_instance.create_tween().set_loops()
 				hover_tween.tween_property(item_instance, "position:y", -2, 1.0).as_relative().set_trans(Tween.TRANS_SINE)
 				hover_tween.tween_property(item_instance, "position:y", 2, 1.0).as_relative().set_trans(Tween.TRANS_SINE)
 		)

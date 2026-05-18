@@ -92,6 +92,8 @@ func shoot(offset: float = 0.0) -> void:
 
 func _on_PlayerDetector_body_entered(body: PhysicsBody2D) -> void:
 	if body != null:
+		if tween:
+			tween.kill()
 		player_detector.set_collision_mask_value(1, false)
 		player_detector.set_collision_mask_value(2, false)
 		body.pick_up_weapon(self)

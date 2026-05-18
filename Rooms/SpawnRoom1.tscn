@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7oeqdu22e1q5" path="res://Rooms/Room.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://r88elkkvv60o" path="res://Rooms/Furniture and Traps/Door.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Rooms/Furniture and Traps/Torch.tscn" id="3"]
-[ext_resource type="Resource" path="res://Rooms/CommonLootTable.tres" id="3_brw5v"]
-[ext_resource type="PackedScene" uid="uid://bwxfm550sp8u8" path="res://Weapons/Crossbow.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://dgah8j3t8wkq" path="res://Rooms/CommonLootTable.tres" id="3_brw5v"]
 [ext_resource type="PackedScene" uid="uid://b828h7j3t8wkq" path="res://Rooms/Chest.tscn" id="7_ee448"]
 [ext_resource type="Resource" uid="uid://df1h8j3t8wkq" path="res://Rooms/RewardLootTable.tres" id="8_x5mc6"]
 
@@ -29,18 +28,14 @@ position = Vector2(56, 24)
 [node name="Torch2" parent="." index="10" unique_id=1590653485 instance=ExtResource("3")]
 position = Vector2(168, 104)
 
-[node name="Crossbow" parent="." index="11" unique_id=483388639 instance=ExtResource("4")]
-position = Vector2(166, 70)
-on_floor = true
-
-[node name="Chest4" parent="." index="12" unique_id=820006217 instance=ExtResource("7_ee448")]
+[node name="Chest4" parent="." index="11" unique_id=820006217 instance=ExtResource("7_ee448")]
 position = Vector2(25, 130)
 loot_table = ExtResource("8_x5mc6")
 
-[node name="Chest3" parent="." index="13" unique_id=994316648 instance=ExtResource("7_ee448")]
+[node name="Chest3" parent="." index="12" unique_id=994316648 instance=ExtResource("7_ee448")]
 position = Vector2(25, 94)
 loot_table = ExtResource("3_brw5v")
 
-[node name="Chest2" parent="." index="14" unique_id=873435058 instance=ExtResource("7_ee448")]
+[node name="Chest2" parent="." index="13" unique_id=873435058 instance=ExtResource("7_ee448")]
 position = Vector2(25, 58)
 loot_table = ExtResource("3_brw5v")
