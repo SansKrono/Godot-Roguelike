@@ -38,6 +38,10 @@ mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 project/assembly_name="Roguelike Tutorial"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SimpleDungeons/plugin.cfg")
+
 [importer_defaults]
 
 texture={
