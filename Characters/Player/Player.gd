@@ -36,19 +36,21 @@ func _restore_previous_state() -> void:
 	self.accerelation = SavedData.accerelation
 	self.coins = SavedData.coins
 	
-	for weapon in SavedData.weapons:
-		weapon = weapon.duplicate()
-		weapon.position = Vector2.ZERO
-		weapons.add_child(weapon)
-		weapon.hide()
+	for weapon in weapons.get_children():
+		if weapon is Weapon:
+			weapon.num_projectiles = SavedData.num_projectiles
+			weapon.projectile_speed = SavedData.projectile_speed
+			weapon.projectile_damage = SavedData.projectile_damage
+			weapon.has_dot = SavedData.has_dot
+			weapon.dot_damage = SavedData.dot_damage
+			weapon.dot_duration = SavedData.dot_duration
+			if weapon.has_node("CoolDownTimer"):
+				weapon.get_node("CoolDownTimer").wait_time = SavedData.fire_rate
+			if weapon.animation_player:
+				weapon.animation_player.speed_scale = 0.6 / SavedData.fire_rate
 
-		emit_signal("weapon_picked_up", weapon.get_texture())
-		emit_signal("weapon_switched", weapons.get_child_count() - 2, weapons.get_child_count() - 1)
-
-	current_weapon = weapons.get_child(SavedData.equipped_weapon_index)
+	current_weapon = weapons.get_child(0)
 	current_weapon.show()
-
-	emit_signal("weapon_switched", weapons.get_child_count() - 1, SavedData.equipped_weapon_index)
 
 
 func _process(_delta: float) -> void:
@@ -64,14 +66,6 @@ func _process(_delta: float) -> void:
 
 func get_input() -> void:
 	mov_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
-	if not current_weapon.is_busy():
-		if Input.is_action_just_released("ui_previous_weapon"):
-			_switch_weapon(UP)
-		elif Input.is_action_just_released("ui_next_weapon"):
-			_switch_weapon(DOWN)
-		elif Input.is_action_just_pressed("ui_throw") and current_weapon.get_index() != 0:
-			_drop_weapon()
 
 	current_weapon.get_input()
 

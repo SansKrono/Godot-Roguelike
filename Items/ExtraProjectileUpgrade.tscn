@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://c619h8j3t8wkq" path="res://Items/UpgradePickup.tscn" id="1"]
+
+[node name="ExtraProjectileUpgrade" instance=ExtResource("1")]
+upgrade_type = 4

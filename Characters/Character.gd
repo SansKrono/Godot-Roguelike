@@ -50,6 +50,23 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 			velocity += dir * force * 2
 
 
+func apply_dot(dot_dam: int, duration: float) -> void:
+	var dot_timer = Timer.new()
+	dot_timer.wait_time = 1.0
+	add_child(dot_timer)
+	dot_timer.timeout.connect(func():
+		if is_instance_valid(self) and state_machine.state != state_machine.states.dead:
+			take_damage(dot_dam, Vector2.ZERO, 0)
+	)
+	dot_timer.start()
+	
+	get_tree().create_timer(duration).timeout.connect(func():
+		if is_instance_valid(dot_timer):
+			dot_timer.stop()
+			dot_timer.queue_free()
+	)
+
+
 func set_hp(new_hp: int) -> void:
 	hp = clamp(new_hp, 0, max_hp)
 	emit_signal("hp_changed", hp)

@@ -11,6 +11,7 @@ var max_hp: int = 4
 
 @onready var inventory: HBoxContainer = get_node("PanelContainer/Inventory")
 @onready var coin_label: Label = get_node("CoinCounter/Label")
+var banner_label: Label
 
 
 func _ready() -> void:
@@ -18,6 +19,23 @@ func _ready() -> void:
 	_update_health_bar(100)
 	player.coins_changed.connect(_on_Player_coins_changed)
 	_on_Player_coins_changed(player.coins)
+	
+	banner_label = Label.new()
+	banner_label.visible = false
+	banner_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	banner_label.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	banner_label.add_theme_font_size_override("font_size", 16)
+	banner_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	banner_label.add_theme_constant_override("outline_size", 4)
+	banner_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	banner_label.position.y = 40
+	add_child(banner_label)
+
+func show_item_banner(item_name: String) -> void:
+	banner_label.text = item_name
+	banner_label.visible = true
+	await get_tree().create_timer(2.0).timeout
+	banner_label.visible = false
 
 
 func _update_health_bar(new_value: int) -> void:

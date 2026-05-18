@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://8snbkvv7tp7w" path="res://Rooms/LootTable.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://df7h8j3t8wkq" path="res://Items/MaxHPUpgrade.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://df8h8j3t8wkq" path="res://Items/SpeedUpgrade.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://bw066vms5rf1j" path="res://Weapons/WarHammer.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://ccvb2nt58qil2" path="res://Weapons/BattleAxe.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Items/DamageUpgrade.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Items/FireRateUpgrade.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Items/ExtraProjectileUpgrade.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Items/ProjSpeedUpgrade.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Items/DotUpgrade.tscn" id="8"]
 
 [resource]
 script = ExtResource("1")
-loot_items = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5")])
-weights = Array[float]([0.25, 0.25, 0.25, 0.25])
+loot_items = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8")])
+weights = Array[float]([0.15, 0.15, 0.14, 0.14, 0.14, 0.14, 0.14])

@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://7oeqdu22e1q5" path="res://Rooms/Room.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://r88elkkvv60o" path="res://Rooms/Furniture and Traps/Door.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Rooms/Furniture and Traps/Torch.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://bw066vms5rf1j" path="res://Weapons/WarHammer.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://b828h7j3t8wkq" path="res://Rooms/Chest.tscn" id="5_auaoo"]
 [ext_resource type="Resource" uid="uid://df1h8j3t8wkq" path="res://Rooms/RewardLootTable.tres" id="6_tv2qw"]
-[ext_resource type="Resource" path="res://Rooms/CommonLootTable.tres" id="7_a5xop"]
+[ext_resource type="Resource" uid="uid://dgah8j3t8wkq" path="res://Rooms/CommonLootTable.tres" id="7_a5xop"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 16)
@@ -32,24 +31,20 @@ position = Vector2(112, 128)
 position = Vector2(112, 48)
 shape = SubResource("1")
 
-[node name="WarHammer" parent="." index="9" unique_id=855166774 instance=ExtResource("4")]
-position = Vector2(208, 88)
-on_floor = true
-
-[node name="Torch" parent="." index="10" unique_id=1185674824 instance=ExtResource("3")]
+[node name="Torch" parent="." index="9" unique_id=1185674824 instance=ExtResource("3")]
 position = Vector2(72, 24)
 
-[node name="Torch2" parent="." index="11" unique_id=322383144 instance=ExtResource("3")]
+[node name="Torch2" parent="." index="10" unique_id=322383144 instance=ExtResource("3")]
 position = Vector2(168, 24)
 
-[node name="Chest3" parent="." index="12" unique_id=114396550 instance=ExtResource("5_auaoo")]
+[node name="Chest3" parent="." index="11" unique_id=114396550 instance=ExtResource("5_auaoo")]
 position = Vector2(40, 117)
 loot_table = ExtResource("6_tv2qw")
 
-[node name="Chest2" parent="." index="13" unique_id=506338466 instance=ExtResource("5_auaoo")]
+[node name="Chest2" parent="." index="12" unique_id=506338466 instance=ExtResource("5_auaoo")]
 position = Vector2(40, 86)
 loot_table = ExtResource("7_a5xop")
 
-[node name="Chest" parent="." index="14" unique_id=502210555 instance=ExtResource("5_auaoo")]
+[node name="Chest" parent="." index="13" unique_id=502210555 instance=ExtResource("5_auaoo")]
 position = Vector2(199, 55)
 loot_table = ExtResource("6_tv2qw")

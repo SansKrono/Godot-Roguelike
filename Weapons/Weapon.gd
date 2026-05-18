@@ -5,8 +5,18 @@ class_name Weapon
 
 @export var on_floor: bool = false
 
-@export var ranged_weapon: bool = false
+@export var ranged_weapon: bool = true
 @export var rotation_offset: int = 0
+
+@export var projectile_scene: PackedScene = preload("res://Weapons/Arrow.tscn")
+@export var num_projectiles: int = 1
+@export var projectile_speed: int = 400
+@export var projectile_damage: int = 1
+@export var spread_angle: float = 15.0
+
+@export var has_dot: bool = false
+@export var dot_damage: int = 1
+@export var dot_duration: float = 3.0
 
 var can_active_ability: bool = true
 
@@ -45,16 +55,7 @@ func get_input() -> void:
 
 
 func move(mouse_direction: Vector2) -> void:
-	if ranged_weapon:
-		rotation_degrees = rad_to_deg(mouse_direction.angle()) + rotation_offset
-	else:
-		if not animation_player.is_playing() or animation_player.current_animation == "charge":
-			rotation = mouse_direction.angle()
-			hitbox.knockback_direction = mouse_direction
-			if scale.y == 1 and mouse_direction.x < 0:
-				scale.y = -1
-			elif scale.y == -1 and mouse_direction.x > 0:
-				scale.y = 1
+	rotation_degrees = rad_to_deg(mouse_direction.angle()) + rotation_offset
 
 
 func cancel_attack() -> void:
@@ -65,6 +66,28 @@ func is_busy() -> bool:
 	if animation_player.is_playing() or charge_particles.emitting:
 		return true
 	return false
+
+
+func shoot(offset: float = 0.0) -> void:
+	if not projectile_scene:
+		return
+		
+	var start_index = - (num_projectiles - 1) / 2.0
+	for i in range(num_projectiles):
+		var p: Node2D = projectile_scene.instantiate()
+		get_tree().current_scene.add_child(p)
+		
+		var angle_offset = (start_index + i) * spread_angle
+		var dir = Vector2.LEFT.rotated(deg_to_rad(rotation_degrees + offset + angle_offset))
+		
+		if p.has_method("launch"):
+			p.launch(global_position, dir, projectile_speed)
+		
+		if "damage" in p:
+			p.damage = projectile_damage
+			
+		if p.has_method("set_dot"):
+			p.set_dot(has_dot, dot_damage, dot_duration)
 
 
 func _on_PlayerDetector_body_entered(body: PhysicsBody2D) -> void:

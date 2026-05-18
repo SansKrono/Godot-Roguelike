@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://beuxbt1hqtnxl" path="res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_run_spritesheet.png" id="3"]
 [ext_resource type="Script" path="res://Characters/Player/Player.gd" id="4"]
 [ext_resource type="Script" path="res://Characters/Player/PlayerFSM.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://bn6jjdha1ecvj" path="res://Weapons/Sword.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bwxfm550sp8u8" path="res://Weapons/Crossbow.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://5s650l0opflc" path="res://Art/v1.1 dungeon crawler 16x16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_spritesheet.png" id="9"]
 
 [sub_resource type="AtlasTexture" id="13"]
@@ -338,7 +338,7 @@ libraries = {
 
 [node name="Weapons" type="Node2D" parent="." index="4"]
 
-[node name="Sword" parent="Weapons" index="0" instance=ExtResource("6")]
+[node name="Crossbow" parent="Weapons" index="0" instance=ExtResource("6")]
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 
